@@ -1,0 +1,107 @@
+
+*{
+margin: 0;
+padding: 0;
+}
+
+body{
+font-family: 'Arial', sans-serif;
+margin: 0;
+padding: 0;
+color: black;
+
+}
+
+.
+
+.textblanco{
+color: white;
+
+}
+
+#contenedor{
+	width: 50%;
+	margin-left: 25%;
+	background-color: #c6c6c6;
+	padding: 30px;
+	border: 2%;
+	
+}
+
+#contenedor h1{
+	font-size: 24px;
+
+}
+
+#contenedor #fore{
+	margin-top: 20px;
+
+}
+
+#fore p{
+	width: 100px;
+	margin-top: 12px;
+}
+
+input[type="text"], input[type="number"], input[type="email"], input[type="password"]{
+margin-top: 2px;
+width: 100%;
+padding-left: 5px;
+padding-right: 5px;
+height: 35px;
+color: black;
+}
+
+select{
+margin-top: 2px;
+width: 100%;
+padding-left: 5px;
+padding-right: 5px;
+height: 35px;
+color: black;
+
+}
+
+input[type="submit"]{
+width: 120px;
+height: 40px;
+color: #fff;
+background: #1d58ff;
+background: linear-gradient(#0fabf4, #1d58ff ;
+border: 0;
+
+}
+
+input[type="submit"]:hover{
+
+background: linear-gradient(#242424, #8e8e8e) ;
+color: #e7e7e7;
+}
+
+/* media queries para hacer responsive */
+
+/* PARA PANTALLAS TABLETS  */
+@media only screen and (min-width: 701px ) and (max-width: 980px){
+
+	#contenedor{
+		width: 60px;
+		margin: 0 auto;
+
+	}
+
+}
+
+
+/* PARA PANTALLAS SMARTPHONE  */
+@media only screen and (min-width: 480px ) and (max-width: 700px){
+
+	#contenedor{
+		width: 80px;
+		margin: 0 auto;
+
+	}
+
+}
+
+
+

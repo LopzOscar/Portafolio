@@ -1,0 +1,631 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Security &mdash; CodeIgniter 3.1.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
+        <link rel="up" title="General Topics" href="index.html"/>
+        <link rel="next" title="PHP Style Guide" href="styleguide.html"/>
+        <link rel="prev" title="Alternate PHP Syntax for View Files" href="alternative_php.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div id="nav">
+  <div id="nav_inner">
+    
+    
+    
+      <div id="pulldown-menu" class="ciNav">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Downloading CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Upgrading From a Previous Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">CodeIgniter Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">CodeIgniter at a Glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Supported Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Application Flow Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Architectural Goals</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Static pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">News section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Create news items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer‚Äôs Certificate of Origin 1.1</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General Topics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Creating Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoloader.html">Auto-loading Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Running via the CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Managing your Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Handling Multiple Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alternative_php.html">Alternate PHP Syntax for View Files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styleguide.html">PHP Style Guide</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/benchmark.html">Benchmarking Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">Caching Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/calendar.html">Calendaring Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cart.html">Shopping Cart Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/config.html">Config Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Email Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encrypt.html">Encrypt Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">Encryption Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_uploading.html">File Uploading Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/form_validation.html">Form Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/ftp.html">FTP Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/image_lib.html">Image Manipulation Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/input.html">Input Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/javascript.html">Javascript Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/language.html">Language Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/loader.html">Loader Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/migration.html">Migrations Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/output.html">Output Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">Pagination Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/parser.html">Template Parser Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">Security Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Session Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/table.html">HTML Table Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/trackback.html">Trackback Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">Typography Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/unit_testing.html">Unit Testing Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">URI Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">User Agent Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/zip.html">Zip Encoding Class</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Database Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">Quick Start: Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">Database Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">Connecting to a Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">Running Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">Generating Query Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">Query Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Query Builder Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">Getting MetaData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">Custom Function Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/caching.html">Query Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">Database Manipulation with Database Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">Database Utilities Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/db_driver_reference.html">Database Driver Reference</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">Array Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/captcha_helper.html">CAPTCHA Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">Date Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/directory_helper.html">Directory Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/download_helper.html">Download Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/email_helper.html">Email Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/file_helper.html">File Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Form Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/language_helper.html">Language Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Number Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/path_helper.html">Path Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Security Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/smiley_helper.html">Smiley Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/string_helper.html">String Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Text Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/typography_helper.html">Typography Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">XML Helper</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    
+      
+  </div>
+</div>
+<div id="nav2">
+  <a href="#" id="openToc">
+    <img src="data:image/jpeg;base64,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" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
+  </a>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> CodeIgniter</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Downloading CodeIgniter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Upgrading From a Previous Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">CodeIgniter Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/at_a_glance.html">CodeIgniter at a Glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Supported Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/appflow.html">Application Flow Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/mvc.html">Model-View-Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/goals.html">Architectural Goals</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">Static pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">News section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Create news items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
+<li class="toctree-l2"><a class5"reference inÙernal" href=#..Ødocumentation/index.htll".Writing CodeHgniter Documentation</q></li>
+<li class="toct2ee-l2"><a blass="refere.ce interfal" hrdÊ="..ØDCO.ltml">Developer‚Äôs Certificatu of Origin 1.1</a></li>
+</um>
+</lI>
+</}l>
+<ul c,·ss="current">
+<li class=¢toctbeeml1 currEnt"><a cl·ss="reference inTerNal" Ëref="index.html">General Topics</a><ul clqss="currdnt"><li class="toctree-l2">,a class="reference internal¢!href<"ubls.htil">CkdeIgniter URLw</a></lI>
+ºli class="toctree-l2"><a class="reference internal" href="controllers.html">CoftrodherÛ</a></li>
+<li class="Ùoctree-l2"><a class="reference knturnad" href="reservud_names.html">Reserved Nales</a</li>
+<li cl`Ss="tnbtrÂe-l2 ><a class="reference internql" href="riews.htmÏ">Views<'a></li><li class="toctrÂe-l2"><q class="re¶erenc` internal" hred="modelw.html&>Models</a></li>
+<lm class="toctree-l2"><a class="reference internal#`href="helpers.html">Helpdvs</a></li>
+<li class="toctree-l2"><· class= refezence )ntesnal# href="dibraries.html">Using CodeIgniter Librapies</a></li?
+<li alass=btoctree-l22><a class="reference ioternal" href="creating~libvcries.html">Creating LibRaries<'q></li>
+<li class="toctbee-l2"><a cjass="ruference ÈnÙernal" href="lrivers.html"6Using CodeIe~iter$Frivers<-a><+li:<li class9"toctree-L2"><a class="reference internal" hre&="crdat)g_dziverr.html">Creating Drivepsº/·>º/ni>
+<li class="toctree-l2"><a class=2reverence internal" xref=*core_clqssds.html2>Creating Core System CLasses</a></li>
+<li cnass="toctrÂa-l0">|a clarc="referefce(internal" hRef="ancillarq_cLasses.html">Creading AncillaRy Klasces</a></li>
+<li class="toctrÂe-l2"><a class="regeRence internil" href="hoks.html">Hogkq - Extendine the Framewovk Core</a></li>
+<li class="toctree-l2"<a class="reference intern!l" hruf="autoloader.html">Auto-loiding Resources</a></li>
+<li clasÛ=&toctree-l2"><a class="ref%renbÂ internal" ibef="c}mon_func|ions.html">Bo-mon Funstions</a></li>
+4li glass="toctree-l2"><a class=*rEference internal"$Ëref="comPatibilixy_gunctionÛ.h|el">Compatibility Functigns8/a></lÈ><lh #lasq="tmcvree-l2"><a0class= reference internal" hrdf="rouving.htmlb>URI Routing</A><li>
+<la claws="toctreu-l2"><a class="reference intdrnaL" href="errors.html">Epror Handling,a></li>
+<l*0class="to„tree/l:"><a cLass="refÂrence internel" href="cachinc.html2>'aching</a></li>
+<li c,ass="toctree-l2"><a class="reference internal" hrev="profiling.html">Profiling Your Application</a></li>
+li class="toc|re%-l2¢><a class="refmrgnce internal" href="#li.h|ml">RunninÁ via the CLI</a.</li>
+<l% alass="toctree-l2"><a class="reference intern·l" href="man`ging_apps.html">Mcnaging your App‰ications</a>,/li>
+<di class="to„tree≠l2"><a class="referufce in4ernil" href="environments.html">Handling Multixle Environments</e></li>
+<li chccs="toctree-l2".<a class="seferenke internal" hreF="alternatyve_p`p.html">AlterÓa|e PHP Sintax for0View FiÏes</a></li>
+<li clqss="tocvree-l2 aurrent"><a class="curr%nt re¶erence internal" hrEf="#">Security</a></li>
+<li class=&toctree-l2"><a class="refer%nke i.terncl" href="styleguide.html">PHP Rtyle Guide<-a></li>
+</ul>
+</liæ
+</ql.
+<ul>
+<li class="toctree-l1"><a clacs="reference interfal" href=../dibraries/indexhtml">Ãibraries</a><ul>
+<li class="$octree-l2"><a claSs="reverence internal& href=2../librarius/benchmark.html">BenchmarkyNg Class</a></li>
+<lk class="pocTree-l2"><a clasq="reference internal# hbEf=&.Æ/libraries/c`ching&html".Cachinf Driver|/a><?Li?
+<li class="toctree-l2"><a clcss="reference mnternal" href="../libraries/calendar.html#>Calendasing Class4/a></li>
+<li clasÛ="voctree-l2"><a0chass="rmference ioternal" href?"../libraries/cart.html">Shopping Cart Class</a></li>
+<li cless="toctreE-lr">>a c|ass="reference internal" href="../librariesconfig.htmm">Config Class</a></|i>
+<li class="toctreÂ-Ï2"><a class="referefce ioterne," hrev="../libraries/email.html#>Email Class</a></li~
+<li class="toctree-l2"><a class="reference ynternal" href}"../librcries/encrypt.html">Encrypt Class</a></li>
+<l	 blass?*poctree-l2"><a class="refarencm internal. href="../libraries/encryption.html">Encryption Library</a~</li>
+>lh clacs="toctree-l2"><a class="reference internal" href="&./librarIes/file_uploading.htMl">File Uploading Class<'a></li>
+=Ïi clacs="toctree)l2"><a class="refeveÓce iÓtAs~al" href="../librarier/fozm_vilidatimn.html">Form Valhdation</q></liæ
+<li class="tocTree-l2">,a class?"reference in5ernal2 hreF="../libraries/ftp.hÙml">FTP Alass</a></li>
+<,i class="toctrue-l2"><a cÏass="referejce in|drnal" hxef="../librasiesimageﬂlib.Html#>	mage Manipulatinn Class</a>=/li~
+<li clacs="toctree-l2"<<a claSs="reference internal" href="../l)brerie{-input.html">Inptt Class</a><-li>
+<li class="toctrae-d2"><a cLass="referen„e internal" href} ../libraries/javascrapt.xtml">Javassript Class</a></li>
+<li class="toctree-l2">a class}"reference(internal" hbef="../Ïibrarieq/laÓguage.html">Language Klass</a></li>
+<li slacs="toctree-l2"><a class="reference internal" href="../libraries/doader.html">LoaderClass</a></li>
+<li slass=&toc4ree-l2#><!0class="reference internal" href="../libraries/migration.html"6]igrations Ch·ss</a><oli><li clasq="tobtree-l2"><a „lass="reference mnternal" href="..ØlibÚarÈes/output.ht}l">Outpuv"Class</a></li>
+<li class="tocdbee-l2¢><a c|ass="reference internal" href="../librarius/paginatio~.html">Pawination Class</a><+li
+<li #la3s="toctree-l2">=a class="reference ÈnteÚnAl" href=".>/lkbrabies/paRser.html">Templqte P·rser Class</a></|i>
+<li cl`ss="tnctree-l2"><a class="refereÓce internal" href=",./libraries/security.hvol"~Security Class</a>8/li>
+<li class="toctree-l2"><e class5"refgrmnce0interna,"href?&.>/libraries/sessions/htel">Session Libr`ry</a></li>
+8li!class="Ùoctree-l2"><a class="reference i~ternal" href="../lmbrarius/table.html">HDML Tible Clars</a</li>
+<li class="toctree-l2*><a c}asr=#refesenae internal" lref=.*/lirraries.lrackBaCk.html">Trackback Class</a<</li6
+<li blass="toctree-m2"><a clas3="reference internal" hrafΩ"../libraries/typoeraphyhtml">Typowraph} ClaÛs</a></li>
+8li clasr="tostree-l2"><a classrefurence ioternal" href="../libraries/unit_teÒting.html¢>Unit Testing Class</a></li<
+<li class=2toctree-l2"><a class="refeven„e internal"!href<"../lhbraries?uri.htÌl¢>URI √lass</a></li>
+<li clAss="toctree-l2"><a class-"seference"inÙernaÏ" hruf=#../libbasier/use2_agent.html">User @Áent ClaÛs</a></li>
+<li class="toctre%≠,2"><a class="reference internal" href="..?librarie3/xmlrpc.html">YML-RPC and XML-RPC Server Classes>/a></Li.
+<lI claSr="toctred-l2"><a0glass="refErenbe inte2nal& href="../libraries/zip&huml">Zip Encoding Class</a></li>
+</ul?
+</li>
+</ul>
+<ul>
+<li class="poctree-l1"><` class="refarence )jÙernal2 href="..?datarase/i~dexhtml">Database Reference=/a><ul>
+<li class}"toctree-l2"><a cl ss="zeferenge ijternal" href="../eatabase/ex`mples.html*>Quick Start: Usa'e Examples</a></li>
+<li class="toctree-l2"><a clasS="referenCe ilternal" href9 ...dquafase/configuration.html">Database Configuration</a></l)>
+<li class="toctree-n:"><a class="reference internal""irEf="../database/connecting.html">Connecting to a Database</a></li<
+<li cdass=#toctree-l2"><a class="reference internal" href="..'database/queries.html"6Running Sueries</a></lm>
+<di cLass="tnct2ee-l0"><a cla3s="referÂNce inteÚnal" hRef="../dcvabasg/results.hdml">Gener`ting Query Results</a></li>
+<li class="tgctree≠l0"><a class-"reference internal" href=",n/eatAbase/helpers.html">Query Helper Functions</a>8/li>
+<lI class="toctree-l2"<<a class="peference internal" href="../ditabase/quepy_builder.html">Query Builder Class</a></li><li class="toctree-l2"><a blass="refarence in4ernal" href="../database/traÓcactions.ht}l">Trans`ctions</a></li>
+<li class-"toctree%d2"><` class=¢reference ijternal" hruf= ../database/let·data.html">Gettifg MetaData</a></li>
+<li cnasw=2toctree,l2"><a class="referen#e k~ternal" href="../$at`base/call_functio..html">Custom Fenction Cil|s</a></ly>
+=li claqs<"toctree-l2"><a class<"refe2ence internal" href="../database/caching.htol">Quer˘ C·ching</a></li>
+<li class="uoctree-l2"><c class="ruferenCe internal" href="..-dAtabase/forge.h4ml"æDatabase Manipulation with Da4abase Forfe</a></li>
+<li clasÛ="toctbee-l2"><a class5"rEferencl!internal" hreg="../datab`se/qtili|ier.html">Database Utilitie{ Clqss</a></li>
+<li class="4octreel2"><a class="referEnce intgbnal" href="../datab·se/db_drivev_reference.html">Databa3e Driter “eferenCe</a></li<</ul>
+</li>
+</ul>
+<wl>
+<li claÛs="toctsee-l1">5a classΩ"reference internal" href="../helpe2s/index.html">Helpers</a><ul>
+<li class="toctree-l2"<a clasc="reference i.tmrnal" (ref=../helpers/arra9_hedpe2.html">Array Xmlpez</a>=/li<
+<li cl·3s="toctree,l2">4a clasqΩ"reference internal" hreb1">./hemper{/captcha_h%lper.html">CAPTKHA Helper</aæº/li>
+<li class="toctree-l2"æ<a class="Reference internal" href="../helpers/cnokie_helper.html">Cookie Helperº/a></li>
+<li class="toctree-l2"><a!class="refereoce in4ernal" href="../helperq/date_helper.html">Dete Helper</a>/lk>
+<li cmass="tctree-l2"><a „la3s5"reference internal"†href=".//hulpers/$irecuory_helper.html">Directorx Helper</a></li>
+>li class="toctree-l2"><c†gmass="2afevence internal  href="../helpers/dowNl/qdOËelper.h4ml">Downloa$ Helper</a></li>
+<lh class="toctree-l2"><e class="reference mnterNal" lref="../helpers/email_helper.html">Email Hmlper</a></li>
+<li class="toctree-l2"><a clasÛΩ"reference internel"!href="...helpers/nIde_he\per.html">FilE Helper<oa></li>
+<li clasS="toctree-l2"><· class="reference internal# href="../helpers/formWhelpernhtml"&FOrm Helpdr>/a>|/li>
+<li$cLass="Ùoitree-l3"<a class="refdrence ilternal2 href="../helxers/html_helper.html">HTmL Helper</a>∏/li>
+<li class="poctree-l2£><a class<"refesence internal" href="../helpers/infleator_helpep.html">Inflestor Helper</a></li>
+<li class="toctree-l2"><a glass="refarence internal" href="../helrers/language_helpeb.html">Language HeLper/`></li>
+<li class="toctree-l2"><a blass="reference mn4erfal" href="...helper3onumber_helperÆ`tmÏ">Numb%r Hel`er</a></li>ä<|i clas1="toctrae-l22><a class="reference!internal" href="../helper{opath_helpgr.html">Path Helper</a></li><li cla{s5"tocTree-l2*><a class-"reference internal" href="../helpgrsØsecurityhelper.itml">securivy Helper</a<</li<
+,li class="toctree-l:"<! class}"reference inteznal" href="../helpers/smiley_helpes.html".Smiley Helper</a></di>
+<lI class="toctree-l2"><a clas3?"referen„e(internal" hbef=".>/he<pers+strkng_helperht}l">String Helper<'a><oli>
+<li class="pkctree-l2"><a claqs="rÂference interÓal" href=".&/helpers/text_hel0er.html">Text"Helper</a></mi>
+<la class="toctree-l2"><a clasw="zeference internAl" href="../helpers/typography_helpeR.htmm"æTypofrAphy Helper</a>|/li>
+<li c|ass=2toctree-l2¢><a class= referefce intupnal" href<"../helpers.url_helper.html">UPL Lelper</a></li>
+<lk class="do„tree-l2"><a class="reference interna|" href="../helpers/xml_helper.html">XML Helper</a></li>
+</ul>
+</li></ul>
+
+      $   
+ 0      
+     "</div>
+      &nbsp;
+    </nav>
+
+  0 <sdction data-togÁle=¢wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav"class="wy-nav-toq" role="navigationb aria-labul="top navigation">
+ !      <i data-togcle=2y-nav-top" class="fa fa-bars"></i>
+        <a href="../index.htol">Code…gniter</a>
+      =/nav>
+
+ (    
+(  "  <div cl!ss="wy-nav-cojtent".
+!     " <div class="rst-content">
+     " (  <div rone="nevigatiol" iria-labEl="brmadcrumbs navagation">
+  <u|0clasr="wy-breadcrumbs"
+    <li><a hraf="../Index.html">Docs</a> &raquo;</lk:
+      
+        <li>4a hsef="index.html">General Toiss</a: &raquo;</li>
+  (   
+    <li>Secu2iÙy</li.
+    <li class="wy-breadcpu}bs-aside">!     
+"  0</li>
+    <div ctyÏ%="float:right;margin=left:5px; id="closeMe">
+      6img title="Classic(Layou4" alt="classIc liyoutb sps="data:image/gif;b`se64,R0lWODlhFAAUAJEAAAACADMzM////wAAACH5BAUUAAIALAAAAAATABQAAaImlI+py+0PW5gRB“DM3DxbWoXis42X13USOLauMqnlsaH/eY6WwAAOs==" />    </div>
+  =/}l>
+  <Ër/>
+<.div>
+    0     <diˆ role="main" slqss="document">
+         !    <div class="section" id="security">
+<h1>Security<a clas3="headerlink" href="#sucuritq" title="ermalink to(this headlinu">¬∂,/a></h1>
+<p>This page de3cribes some ‚Äú‚est pr·ctices‚Äú regarding web security, and
+details AodeIgniter‚ÄŸs intevnal security features.</p>
+<div`chiss="admonition note"><p class"first admonition-titme">Note</p>
+<p class=#last">If qou „ame jere looking for a {ec}rity contact, pleasm†refer to
+our <cipe>CoÓÙrÈbuvion Guidm &lt;../conubibuting.indey&gt;</cite>.</`>
+</div>
+<div class="sectioj" Èd="uri-sec5rity">
+ºh2URI Sacurity<a class="headerlink" href}"3uri-security" title="Permalink to dhys headline">¬∂</a></h3>
+<p>CodeIgniter is fairly restri#tife pegarding which characters iT allows
+in your UBI strings in .reer to help minImize phe `ossibility that
+malici/us data can be passed tO your application. URIs may o~ly contain
+the followyng:<.p><ul class="simple">
+<li>A|pha-numeric text (latin Char`cters Ônly)</l9.
+<li~Tilde: ~</li>
+<li>Percent sign: e</li>
+<li>Period: .8/li>
+<li>Cklon: :<-li><li?Uo`erscore: _4/li>
+<li>Dash: -</li>Ç<li>Spacm</li>
+</ul>
+</div>
+<div class="section" id5"regirter-globals#>
+<`2>Register_globals<a class="headerlink""href="register-globals" title="PermalI.k to this hea$line >¬∂<?a></h2>
+<pæDuring syste} inhtializction all glObal variqbles that are fÔund to exist
+in the <code class="docu|ils liter`l">,span class="0re">§_GET</span></gode>, <cgde cÏas3="dogutils litgral"><span class="pre*>$_@OST</span>,%code>,!<c/de cless="docutil” litural"><span clas3="pra">$_REQUEST</span></code> and <co‰e class="docutils hiteral"><Ûpan†cless="pre">$USOOKIE</{Pan6</code> are unset.</p?
+<p>The(unsetting ro5tine is effubtively the same as =em>registes_globals = off<+em>.|/p>
+</div>
+<dif class="section" id="eisplay-errorsb>
+4h2>display_errors<a c|ss="header|ink" hrgf="#diqplay-erroRs" title="Permalink to this headline">¬¶</a></h2>
+<p~In pzoductiÔn†environments, it ms typicAlly tesiri‚le to ¢Äúdisable‚Äù PHP‚Äôserror seporvhng by†setting the internal <em>disrlay_erross</em> flag to a value
+kf 0. This disabldS nativu RHP errors from!being 2endeRed as output,
+which eay potentiilly contain sensitive infgrmaTÎon.</p><p>Setuing CodeAgniter‚Äôs <stroÓg>ENVIRONMENT4/strong> constant in iodex.php to e`vilue of
+<strong>‚Äòprodwction‚Äô</strong? wÈll turn gff these errors. In develoqment mode, it is
+recommended that a value of‚Äòdevelopment‚Äô is used. More infÔrmation
+about0differentiating betweeo enrironmÂnts can je found on the
+<a class?"refurence internal" href="enviro~ments.html"æ<span clas3="doc">HandlinG Enrironments</{pan></a> page.</p>
+</eiv>
+<di6 class="rectyon"$id="magic-quotes-runtime">
+<h2>magic_Quotes_runtime<a class="heaferhink" href=&#magic-quotes-runtime" titne="Permalijk vo this headline">¬∂</a></h2>
+<p:The <em>iagic_Òeotes_runÙime</em> direcıive is turned off dtping {ys|em
+iniÙi!lizatinn so that you dml‚Äôt have to remove slashes when retrievinG
+lata frOm youp"database.</p>
+<div class="section" hd="bgst-practices">
+<h3>BesT Practikes<a class="headerlknk" (ref="#best-practi„es& title="Permalink to†this headÏine">¬∂</a></h≥>
+<p>Beforg accept)ng0any data inTo your a0plication, whethdr(it be POST!data
+Êrom a form submission, CKOKIE detA, URI dcta, XML-RPC data,!or even
+data from$the SERVER array, you are encouraeed to practhce thiÛ three
+step approach:</p>
+<ol clAss="arabic simple">
+<li>Validate the data to ensıre it conforms to the coÚsuct type, length,
+size, etc.</li>
+<mi>FilteÚ thd data as if it werg ÙaÈnted&</li>
+,li>Escape the dada before 3ubmitting it into your database or outputting
+iÙ |o a browser.</li>
+</ol>
+<p7CoddI'niter0proviees the followinw functiOns and tiPs to assis| you
+in tlis progEss:</p>
+</dav6
+</div>
+<div class="section" ht="xss-Filteping">
+<h2æXSS Nil|ering<a klAÛs="headerliok" zref="#xss-fiLtering" titlE="Permalinc to this headlineb>¬∂</a>,/h2~
+<p~CodeIgniter comes with a Cross Ci|e`Scripting filter> Thhs filterlooks for†commg~ly uSÂd techniuues 4o embed laliaious$JavaScript into
+your data, or other types of code that attempt to hijack cookies0or
+$o othev malicious(thiNÁs. The XSS Filte` is†described
+<a class="reference internal" href="../libraries/secusity.html"><span sla3s="doc">here<.span>/a>.=/p>
+=div class="adlonition note">
+<p class=*fivst admonition-title".Note</p>
+<p class="lqst">XSS fihtering should <em>only ce performed on outxut</em>. Filtering
+inpet data may modify the d`ta i~ wÓdesIrabdm ways, including
+3Ùripping spucial claracters from pAssford{,"which reduces
+security instead of imprgˆing it.</p>
+º/div>
+<odiv>
+<div cLass="section" id="csrf-ppotection">
+<h2>CSRF pvote{tion>a class="he`lerlink" href="#Csrf-qrotection" title="Pebmalink to phis headlije"<À∂</a></h2>
+<p>CSRF stands for CroÛs-Site RequesT Forgery, which is0the ppocess of !n
+attagker tricking tleiR v)ctim into unknoingly submitting A$request.</p<
+<p6CoteIgniter provides CSRF protection out of the box, which will`get
+automauically driggered for avery non-GET HTTP request, but also nemds
+you to create your submit forms in a certain wai. Thys is explainet in
+the <a class=breferejse hntErna|" hreF9"../librari%s/sdcupity.html"><s`an class="dob">Security Library</span></a> documentation.</p>
+</div>
+<diˆ class="sgction"$id="password-handling">
+<i2>Qissword h·>d|inf<a claSs="headerlink" href="#password-handling" title="Rermalink(to this headline">¬∂</a></h2>
+<p>It is <e-<critical</em> that!you!handmE passwords in your atlication properly.</p>
+<p>Unfor|unately, maÓy!developers donÚÄôt know how to do"that, `n‰ the web is
+full of outdated or othurwise†ırong&ul advibes, which doesnÍÄôt help.=/p>
+<p>We woul$ lyke to give you c list0of0combined do‚Äs and don‚Äôts to help qou
+with that. Plea3e read below.</p>
+<ul>
+<li><p class="first">$O NOT Ûtore†`!sswords )n plain-tmxt format.</p>
+<q>Always <strÔng>hash<ostrong> ykur passwords.</p>
+</li>
+<li><p class="first">DO NOT u3e Base64 or similar ensoding for!storing passwords.</p>
+<p>This is as good as stbing them in plainmtexp. Raally. Do <strong:hashing</strong>,
+not <em>encoding</em>.</p><p>Encoding, cnd encryptiOn too, are two-way prkcesses. aSswordS are
+secrets That must onÏy Be known to their owner, and vhus must work
+only in one direction.!Hishing does that - there‚Äôs <emno</em> un-hashing nr
+le-hashing, but there(is deÍoding and decryption.</p>
+</l)>
+<li.<p class="first">DO NGT tse weak nr broken hashinc algnrithmsblike MD5 or SHA1.</0>
+|p>These algorithms are0Old, proven to be flaged, and not designed fÎr
+pasqword0hishing in the first Place.</r~
+<>Also, DON‚ÄôT invent yoır own(algorithms.</p>
+<p>Only use strong passwor` hashing algorithms nike BCrypt- which is usedij XHP‚Äôs owl <a class="reference exTerfal" href="httq>//php.net/passWord">Password »ashxnu</a> functionS.</>
+<p?Please use Them, even If you‚òôre not runling PHP 5.5+, Cod%Ieniter
+provides them for you.</p>
+</lÈ>
+<l	><p cnass="first&>DO NOT ever display or send a passsord in plaiN-text gormat!</p>
+<p>Even to the passwobd‚Äôs owner, if you need a ‚Ä∆orgotten password‚Ä
+faaturm, just randomly gdnerate a new,†one-time (this†is clso important)
+passwovd and send that instÂad.</p>
+</li>
+<li><p`class"f)rst¢>DO NOT put unnecessary limits on(your users‚Äô passwords.</p><p>Af you‚Äôre using a hashing algozithm Ôther than BCpyrt (which h·s!a limit
+of 72 aharacters(, xou {hould wet a relatmˆely high limit on password
+lengthg in(oÚder to mitigAte DoS attacks - say, 1024 characters.<-p>
+<p>Other thqn that however, there‚Äô3 no point in forcing a rule that†apasswosl cqn only!be up to a number of characders, or that!i| saÓ‚ÄŸt
+contail a cebtain set of"special`characters.</p>
+<p>Not onny does this <stsong>reduce</strong> security i.stea` of improving it, but
+there‚Äôs literally no reason to`fo it. No t%chnical limitaÙions and
+no (prac|ic`l) storage constraints apply oNce you‚Äôve hashed them, none!</p>
+</li>
+4/ul>
+<div>
+<dmv class="section""id="vAlidate-input-data">
+<h2>Valida|e input data<a class="heqderlink" href"#validate-ijpuT-data" title="Permalinj to this headline">¬∂</a></h2>
+<p>CodeIfniter h`s a <a c|ass="referense intdrnal hrEf="../lhfrariÂs/fo2m[validation.it-l"~<sp·n claÛs="doc">Form Validation Library>/Ûpan></` tlat assists you in
+validating, filtering, and prepping youR data></p>*<p>Even if that doesn‚Äôt wozk for your wse case however. be sure to always
+valIdate aod Sanitize all input data. Nor example, if you expect ` numeric
+string for an inp}t variable, you can check &or Ùhat with <codd cmass="docuty|s literal"æ<span clacs="pre">iy_numeric )</span></code>
+or <code$cÏass="docutils literal"><span cnass="tre"6ctype_ligit)!</span<=-cofe>. Always try to narrow down your checks tÔ a0cgrtain
+pa|tmRn.</p>
+,p>Haˆe it in miod that!this incl}deS not only <codu clas3?"docutils literam"><span cla{s="pre">$_POST-/span></code>$and <code class="docuthls literal"><span class"pre">$_GET</span:</cde.
+variables, bu4 also cokies, the u{er-agent#string and!basisally
+|em>all data that is not createl directly cy ynur own code</ei~.</p>
+</div>
+<div class="section"(id="escape-All-data-before-datcbase-insertion">
+<h2>Escape all data before8ƒatabAse insirtion<a class= headerlifk" href="#escape-all-data-befkre-dapabase-insertion" ti|l%="Permalink to dhis headline">‚∂</a></h26
+<p>Never insert information intg`your database widhout escepinc it.
+Please see`the section that discusses <a class="reference iotes.!l" href="../database'queries.html"><span!cliss"doc">database queries</span></a> for mowe information.</p
+</div>
+<d©v class="secthon" id?"lide-your-files"~
+<h2>Hide your files<a class="headerlink" href="#hide%your-films" tid|e="Rerma|ink to`this headline">¬¶</a></h2>
+8p>A~other good smcurity pract)ce¢is to ofly leave your"<dm>iNeex.`hp</em>
+an$ ‚Äúassets‚Äù (e.g. .js, css and ioage filer) under your sepfgv‚Äôs
+<em>wecroot</Em> dipectory (most commonly named ‚Äúhtdocs/ÍÄç). \hese are
+the Ônly files thit you would need to be qccessible from the wec.</p>
+<p>Allowing your visitors to see anything else vould potentIally
+allow them to access(senSitiv% data, ex%cutÂ scsipts, euc./>
+<p>If yow‚ÄôRe not alloved`tg do that, you can try using a .htaccesS
+file to rectrict access to those reroqrces.</p>
+<p>CodeIgniter will have an index.html file in al, oF itsdirdctovies in an attempt to hide some of This data, but have
+it0in mÈnd that this is not enough to prevent a serious
+attAcker.</p>
+</$if>
+</div>
+
+      †   </div>
+          <footer>
+  
+    <div class="rst-footer-buqtons" role="n`vigation" aria-label="foote2 naVigation">
+ °    
+        $a href="stileguide/html" c|ass="btn btn-nautral fÏo·T-right" title="PHP Styde Cuide">NExt <span class= fa fa-arrow-cirkld-righd&></span></a>
+      
+              <a href}"alternative_php.html" clasÛ=""tn btn-neutzal2 tiÙle="AÏternate PHP Sy~tax for Viaw Giles"><span class="fA fa-arrow-cÈrcle-left">|/span> Previour=/a>
+   †  
+   0</dyv>
+0 
+
+" <h2/>
+
+  <diF role="cOntentinfo">
+‡   <p>
+        &copy; Copyrkwht 2014 -!2017, Jriuish Colembia"Instktute of Techmology.ä    ( Last upeated on Sep 25, 2017.
+   !</p>
+$ </div>
+
+  Built with <a href="ht4p://sphinx-doc.org'">Sphinx</a> using a <a href="https:+/github.cOm/snide/sphinx_rtd_theme">theme</a> provided by <a href="htt0s://rdadthedocs.org"~SeAd the Dncs</a>>
+  
+</footer>
+        <-div>ä  (   </div>
+
+(   </section>
+
+  </div>
+0 
+
+
+  
+
+    <scRip| type="text/javascript">
+ 0      var OCMETATION_OPTI_NS = {
+        †   URL_ROOT:ß../'(
+            VERSKON>'3.1.6',
+            COLLAPSE_INDEX:false,
+ 0`    $!   FILE_SUFFIX2'nhtml',
+†           HAS_SOURCU: †fal{e
+        |;
+ `  </script>
+  !   ºscrapt type="text/jaˆascript" src="../_staTic/jquery.js"></script>
+  "   <scrypt type="text/javascript" src="../_sdatic/underccore.j3"></script>
+      <sGript(type="tept/javascript" src5"../_static/doctools.j3"></script>
+ä  
+
+  
+! 
+   `<script(txpe="textjavascbipt" Ûrc="./_static/js/theme.js"></scrÈpt>
+  
+
+  
+  
+  <script type="text/javaScript">
+  0   jQuery(function )9 {
+          SphinxRtdTheoe,SuickyN`v.enable();
+   "  });
+  </sCpipt>
+  !
+
+</body>
+</html<

@@ -1,0 +1,112 @@
+/* Animacion para escalar un elemento */
+
+@keyframes escalar{
+
+	0%{transform: scale(.5);}
+	50%{transform: scale(.8);}
+	100%{transform: scale(1.2);}
+
+}
+
+/* Animacion para rotar un elemento */
+
+@keyframes rotar{
+
+	0%{transform: rotate(0deg);}
+	100%{transform: rotate(720deg);}
+	
+
+}
+/* Animacion para dar opacidad a un elemento */
+
+	@keyframes opacidad{
+
+		from{opacity: 1; }
+		to{opacity: 0;}
+
+
+	}
+
+
+	/*  Animacion para expandir   */
+	@keyframes aumentar{
+		0%{transform: scale(1,1.5);
+		}
+		50%{transform: scale(1.1,1.1,1.1);
+		}
+		100%{transform: scale(1.05,1.05,1.05);
+			background-color: yellow;
+			border-radius: 20px;
+			box-shadow: 0 0 5px black;
+			transform-style: preserve-3d;
+		}
+	}
+
+	@keyframes windows_span{
+		0%{transform:scale(1);}
+		50%{transform:rotate(360deg);}
+		100%{transform:scale(1);}
+	}
+
+
+	@keyframes windows{
+		0%{transform:scale(0deg);}
+		50%{transform:rotate(360deg);}
+		100%{transform:scale(720deg);}
+
+	}
+/*-------------------------------------------------*/
+img.anim_scale{
+
+	animation-name: escalar;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+
+
+
+}	
+
+img.anim_rotate{
+
+	animation-name: rotar;
+	animation-duration: 3s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+
+
+
+}	
+
+img.anim_opacity:hover{
+
+	animation-name: opacidad;
+	animation-duration: 3s;
+	animation-timing-function: ease-out;
+
+}
+
+img.anim_aumentar:hover{
+	cursor: pointer;
+	animation-name: aumentar;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+#windows{
+	position: relative;
+	width: 82px;
+	height: 82px;
+	animation:windows 5s infinite linear;
+	left: 100px;
+}
+
+#windows span{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	/* background:yellow;*/
+	display: block;
+	animation: windows_span 1s infinite linear;
+}
+
